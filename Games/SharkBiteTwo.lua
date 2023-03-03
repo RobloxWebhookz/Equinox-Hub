@@ -5,12 +5,12 @@ local gui = Library:create{
 }
 
 local tab = gui:tab{
-    Icon = "rbxassetid://6034996695",
+    Icon = "rbxassetid://6034744054",
     Name = "Boats"
 }
 
 local tabb = gui:tab{
-    Icon = "rbxassetid://3340613148",
+    Icon = "rbxassetid://6035181886",
     Name = "Visuals"
 }
 
