@@ -1,6 +1,6 @@
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
 
-local GUI = Mercury:Create{
+local gui = Mercury:Create{
     Name = "Equinox-Hub",
     Size = UDim2.fromOffset(600, 400),
     Theme = Mercury.Themes.Dark,
@@ -8,5 +8,5 @@ local GUI = Mercury:Create{
 }
 
 local tab = gui:tab{
-    Icon = "rbxassetid://6034996695",
-    Name = "Aimbot"
+    Icon = "rbxassetid://12671088926",
+    Name = "Boats"
