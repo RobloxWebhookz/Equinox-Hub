@@ -127,46 +127,39 @@ tab:Button{
     end
 }
 
--- esp toggle
+-- visuals funtions
 
-local folder = game:GetService("Workspace").Sharks
-local isEspEnabled = false
+local function sharkESP()
+    local folder = game:GetService("Workspace").Sharks
 
-local function outlineMesh(mesh)
-    local selectionBox = Instance.new("SelectionBox")
-    selectionBox.Adornee = mesh
-    selectionBox.Color3 = Color3.new(1, 0, 0)
-    selectionBox.SurfaceTransparency = 1
-    selectionBox.Parent = game:GetService("Workspace")
-    return selectionBox
-end
-
-local selectionBoxes = {}
-
-tabb:Toggle{
-    Name = "Shark ESP",
-    StartingState = false,
-    Description = "Enables or disables ESP for sharks",
-    Callback = function(state)
-        isEspEnabled = state
-        for _, selectionBox in ipairs(selectionBoxes) do
-            selectionBox:Destroy()
-        end
-        selectionBoxes = {}
+    local function outlineMesh(mesh)
+        local selectionBox = Instance.new("SelectionBox")
+        selectionBox.Adornee = mesh
+        selectionBox.Color3 = Color3.new(1, 0, 0)
+        selectionBox.SurfaceTransparency = 1
+        selectionBox.Parent = game:GetService("Workspace")
     end
-}
 
-while true do
-    if isEspEnabled then
+    while true do
         for _, model in ipairs(folder:GetDescendants()) do
             if model:IsA("Model") then
                 local mesh = model:FindFirstChildWhichIsA("MeshPart")
                 if mesh then
-                    local selectionBox = outlineMesh(mesh)
-                    table.insert(selectionBoxes, selectionBox)
+                    outlineMesh(mesh)
                 end
             end
         end
+        wait(5)
     end
-    wait(5)
 end
+
+
+-- visuals scripts
+
+tabb:Button{
+    Name = "Shark ESP",
+    Description = nil,
+    Callback = function()
+        sharkESP()
+    end
+
