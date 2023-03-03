@@ -1,7 +1,7 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
 
 local gui = Library:create{
-    Theme = Library.Themes.Dark
+    Theme = Library.Themes.Serika
 }
 
 local tab = gui:tab{
