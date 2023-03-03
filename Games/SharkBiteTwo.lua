@@ -10,8 +10,8 @@ local tab = gui:tab{
 }
 
 local tabb = gui:tab{
-    Icon = "rbxassetid://12671088208",
-    Name = "View"
+    Icon = "rbxassetid://3340613148",
+    Name = "Visuals"
 }
 
 -- boat trigger
@@ -129,30 +129,42 @@ tab:Button{
 
 -- visuals funtions
 
-local function sharkESP()
-    local folder = game:GetService("Workspace").Sharks
-
-    local function outlineMesh(mesh)
-        local selectionBox = Instance.new("SelectionBox")
-        selectionBox.Adornee = mesh
-        selectionBox.Color3 = Color3.new(1, 0, 0)
-        selectionBox.SurfaceTransparency = 1
-        selectionBox.Parent = game:GetService("Workspace")
-    end
-
-    while true do
-        for _, model in ipairs(folder:GetDescendants()) do
-            if model:IsA("Model") then
-                local mesh = model:FindFirstChildWhichIsA("MeshPart")
-                if mesh then
-                    outlineMesh(mesh)
-                end
-            end
-        end
-        wait(5)
-    end
+local function outlinePlayer(player)
+    local selectionBox = Instance.new("SelectionBox")
+    selectionBox.Adornee = player.Character.HumanoidRootPart
+    selectionBox.Color3 = Color3.new(0, 1, 0)
+    selectionBox.SurfaceTransparency = 1
+    selectionBox.Parent = game:GetService("Workspace")
 end
 
+
+local isSharkESPToggled = false
+
+local function outlineMesh(mesh)
+    local selectionBox = Instance.new("SelectionBox")
+    selectionBox.Adornee = mesh
+    selectionBox.Color3 = Color3.new(1, 0, 0)
+    selectionBox.SurfaceTransparency = 1
+    selectionBox.Parent = game:GetService("Workspace")
+end
+
+local function toggleSharkESP()
+    isSharkESPToggled = not isSharkESPToggled
+    if isSharkESPToggled then
+        while isSharkESPToggled do
+            local folder = game:GetService("Workspace").Sharks
+            for _, model in ipairs(folder:GetDescendants()) do
+                if model:IsA("Model") then
+                    local mesh = model:FindFirstChildWhichIsA("MeshPart")
+                    if mesh then
+                        outlineMesh(mesh)
+                    end
+                end
+            end
+            wait(5)
+        end
+    end
+end
 
 -- visuals scripts
 
@@ -160,6 +172,20 @@ tabb:Button{
     Name = "Shark ESP",
     Description = nil,
     Callback = function()
-        sharkESP()
+        toggleSharkESP()
     end
+}
 
+
+tabb:Button{
+    Name = "Player ESP",
+    Description = nil,
+    Callback = function()
+        while true do
+            for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+                outlinePlayer(player)
+            end
+            wait(5)
+        end
+    end
+}
