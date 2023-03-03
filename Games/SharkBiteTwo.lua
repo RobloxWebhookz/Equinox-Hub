@@ -7,12 +7,12 @@ local GUI = Mercury:Create{
     Link = "https://github.com/RobloxWebhookz/Equinox-Hub/new/main/Games"
 }
 
-local Tab1 = GUI:Tab1{
+local Tab1 = GUI:Tab{
 	Name = "Boats",
 	Icon = "rbxassetid://12671088926"
 }
 
-local Tab2 = GUI:Tab2{
+local Tab2 = GUI:Tab{
 	Name = "View",
 	Icon = "rbxassetid://12671088208"
 }
