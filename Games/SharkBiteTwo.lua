@@ -166,6 +166,10 @@ local function toggleSharkESP()
     end
 end
 
+local function outlineMesh(mesh)
+   game:GetService("Workspace").Terrain.WaterTransparency = 1
+end
+
 -- visuals scripts
 
 tabb:Button{
@@ -187,5 +191,14 @@ tabb:Button{
             end
             wait(5)
         end
+    end
+}
+
+
+tabb:Button{
+    Name = "See-Through Water",
+    Description = nil,
+    Callback = function()
+        toggleSharkESP()
     end
 }
