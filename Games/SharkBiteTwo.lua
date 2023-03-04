@@ -167,7 +167,7 @@ local function outlineMesh(mesh)
     local selectionBox = Instance.new("SelectionBox")
     selectionBox.Adornee = mesh
     selectionBox.Color3 = Color3.new(1, 0, 0)
-    selectionBox.SurfaceTransparency = 0
+    selectionBox.SurfaceTransparency = 1
     selectionBox.Parent = game:GetService("Workspace")
 end
 
