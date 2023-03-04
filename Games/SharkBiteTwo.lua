@@ -159,7 +159,7 @@ tab:Button{
     end
 }
 
-tab:Button{
+tabb:Button{
     Name = "Cruise Ship",
     Description = nil,
     Callback = function()
