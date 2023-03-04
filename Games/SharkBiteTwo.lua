@@ -148,8 +148,8 @@ local function outlineMesh(mesh)
     selectionBox.Parent = game:GetService("Workspace")
 end
 
-local function WaterSee()
-   game:GetService("Workspace").Terrain.WaterTransparency = 1
+local function setWaterTransparency()
+    game:GetService("Workspace").Terrain.WaterTransparency = 1
 end
 
 local function toggleSharkESP()
@@ -203,6 +203,6 @@ tabb:Button{
     Name = "See-Through Water",
     Description = nil,
     Callback = function()
-        WaterSee()
+        setWaterTransparency()
     end
 }
